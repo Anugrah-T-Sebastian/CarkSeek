@@ -39,7 +39,7 @@ def loginPage(request):
             print('Username OR password does not exist')
 
     context = {'page': page}
-    return render(request, 'BaseApp/login_register.html', context)
+    return render(request, 'BaseApp/login.html', context)
 
 def logoutUser(request):
     logout(request)
@@ -55,11 +55,18 @@ def registerPage(request):
     else:
         form = CarSeekUserCreationForm()
     context = {'form':form}
-    return render(request, 'BaseApp/login_register.html', context)
+    return render(request, 'BaseApp/register.html', context)
 
 # USER-PROFILE PAGE
 def userProfile(request, pk):
 
     context = {'pk':pk}
     return render(request, 'BaseApp/profile.html', context)
+def searchPage(request):
+    return render(request, "search.html")
+
+
+
+def layout(request):
+    return render(request, "layout.html")
 
