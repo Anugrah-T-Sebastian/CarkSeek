@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+
+{% block css %}
+<style>
+    .account {
+        width: 400px;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        box-shadow: 5px 5px 20px #aaa;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+        padding: 20px 40px;
+    }
+
+    .account h2 {
+        margin-top: 10px;
+        text-align: center;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="account">
+    <h2>Login</h2>
+    <div class="panel-body">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>username</label>
+            <input type="text" class="form-control" placeholder="username" name="username">
+        </div>
+        <div class="form-group">
+            <label>password</label>
+            <input type="password" class="form-control" placeholder="password" name="password">
+        </div>
+        <div class="form-group"> <!-- 添加这个div用于包裹按钮，使其并列 -->
+            <div class="row"> <!-- Bootstrap的行 -->
+                <div class="col-xs-6">
+                    <button type="submit" class="btn btn-primary btn-block">login</button>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-primary btn-block">register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
