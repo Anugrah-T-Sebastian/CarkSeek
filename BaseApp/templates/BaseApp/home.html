@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Real Estate Page Template</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+
+
+                <p class="mb-0"></p>
+                <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'logout' %}">Logout</a>
+
+                <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'login' %}">Login</a>
+
+
+      </div>
+    </nav>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-12">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+              <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="images/cover.gif" alt="First slide">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-12">
+          <div class="row">
+            <div class="col-sm-6 col-12">
+              <div class="card">
+                <img class="card-img-top" src="images/400X300(1).gif" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">SUV</h5>
+                  <p class="card-text">An SUV, or Sport Utility Vehicle, is a versatile vehicle type that combines elements of road-going passenger cars with features from off-road vehicles, like higher ground clearance and four-wheel drive. SUVs are known for their spacious interiors, making them ideal for families and outdoor adventures.</p>
+                  <a href="#" class="btn btn-primary">Go to see</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-12">
+              <div class="card">
+                <img class="card-img-top" src="images/400X300(2).gif" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Sedan</h5>
+                  <p class="card-text">A sedan is a type of passenger car that typically features a three-box configuration with separate compartments for the engine, passengers, and cargo. Sedans are characterized by their fixed B-pillars and usually have four doors. They are one of the most common car body styles, known for comfort and safety.</p>
+                  <a href="#" class="btn btn-primary">Go to see</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-12">
+              <div class="card">
+                <img class="card-img-top" src="images/400X300(3).gif" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Limousine</h5>
+                  <p class="card-text">A limousine is a luxury vehicle driven by a chauffeur, with a partition between the driver's compartment and the passenger's compartment. Limousines are often elongated for more spacious interiors and are associated with opulence and prestige. They are commonly used for special occasions, such as weddings and corporate events.</p>
+                  <a href="#" class="btn btn-primary">Go to see</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-12">
+              <div class="card">
+                <img class="card-img-top" src="images/400X300(4).gif" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Roadster</h5>
+                  <p class="card-text">A roadster is a convertible sports car designed for exhilarating performance and driving pleasure. Roadsters are typically two-seaters, have a soft top or a retractable hardtop, and focus on agility and fun driving dynamics. They are often associated with open-air motoring enjoyment.</p>
+                  <a href="#" class="btn btn-primary">Go to see</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="col-lg-4 col-12">
+          <div class="row mx-0">
+            <div class="col-12 card bg-light mx-auto">
+              <h3 class="text-center card-header">Find Your Location</h3>
+              <form class="card-body">
+                <div class="form-group row">
+                  <label for="location1" class="col-form-label">Location</label>
+                  <select class="form-control" name="location" id="location1">
+                    <option value="">Any</option>
+                    <option value="">Glasgow</option>
+                    <option value="">Edinburgh</option>
+					  <option value="">London</option>
+					  <option value="">Bristol</option>
+					  <option value="">Birmingham</option>
+					  <option value="">Manchester</option>
+					  <option value="">Leeds</option>
+
+                  </select>
+                </div>
+                <div class="form-group row">
+                  <label for="pricefrom" class="col-form-label">Price From</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text" id="basic-addon1">￡</div>
+                    </div>
+                    <input type="text" class="form-control" id="pricefrom" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="priceto" class="col-form-label">Price To</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text" id="basic-addon2">￡</div>
+                    </div>
+                    <input type="text" class="form-control" id="priceto" aria-describedby="basic-addon2">
+                  </div>
+                </div>
+                <p class="text-center"><a href="#" class="btn btn-danger" role="button">Search </a></p>
+              </form>
+            </div>
+            <div class="col-12">
+              <h3 class="text-center">Agents</h3>
+              <hr>
+              <div class="media">
+                <img class="mr-3" src="images/64X64.gif" alt="Generic placeholder image">
+                <div class="media-body">
+                  <h5 class="mt-0">Vivian Alice</h5>
+                  <abbr title="Phone">P:</abbr> (123) 456-7890 <a href="mailto:#">first.last@example.com</a>
+                </div>
+              </div>
+              <div class="media mt-2">
+                <img class="mr-3" src="images/64X64.gif" alt="Generic placeholder image">
+                <div class="media-body">
+                  <h5 class="mt-0">Linda Smith</h5>
+                  <abbr title="Phone">P:</abbr> (123) 456-7890 <a href="mailto:#">first.last@example.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <section>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-12 col-12">
+            <h3>Our Services</h3>
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Insurance</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Location Service</a>
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Messenger Feedback</a>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <p class="text-center mt-2"><img src="images/insurance.gif" alt=""></p>
+                <p>Offer users the option to obtain insurance coverage for their rental, specifying the cost and the areas of coverage.</p>
+              </div>
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <p class="text-center mt-2"><img src="images/pick and drop.gif" alt=""></p>
+                <p>The website must incorporate functionality to determine the nearest store location and provide options for car pick-up and drop-off based on the user-provided location.</p>
+              </div>
+              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <p class="text-center mt-2"><img src="images/messenger.gif" alt=""></p>
+                <p>If users need to communicate with customer representatives for inquiries, feedback, or complaints, they can utilize the website's built-in messenger application to do so.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-12">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <h3>About Us</h3>
+              <hr>
+              <p>CarSeek is an innovative platform designed to simplify the vehicle rental process for both dealers and customers alike. Offering a diverse array of rental options, CarSeek provides a seamless experience for individuals seeking reliable transportation solutions. Dealers can effortlessly list their vehicles on our platform, expanding their reach to a broader audience of potential renters.</p>
+              <p>Our intuitive interface empowers customers to explore rental options by category, browse listings with ease, and locate nearby rental outlets. With our comprehensive insurance coverage, customers can enjoy peace of mind knowing their rental experience is safeguarded.</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mt-md-0 mt-2">
+          <h3>Contact Us</h3>
+          <hr>
+          <address>
+            <strong>The University of Glasgow</strong><br>
+            Jiatong, Li<br>
+            <abbr title="Phone">P:</abbr> (44) 01234567890
+          </address>
+          <address>
+            <strong>Full Name</strong><br>
+            <a href="mailto:#">first.last@example.com</a>
+          </address>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>
