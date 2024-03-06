@@ -11,7 +11,20 @@
       <change afterPath="$PROJECT_DIR$/.idea/pythonProject.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/css/bootstrap-4.4.1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/images/400X300(1).gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/images/400X300(2).gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/images/400X300(3).gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/images/400X300(4).gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/images/64X64.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/images/cover.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/images/insurance.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/images/messenger.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/images/pick and drop.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/js/bootstrap-4.4.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/js/jquery-3.4.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/static/plugins/bootstrap-3.4.1-dist/js/popper.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/templates/BaseApp/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CarkSeek/CarSeek/BaseApp/templates/BaseApp/home.html" afterDir="false" />
     </list>
@@ -50,6 +63,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IT\semester2\IT\CarseekDream\pythonProject\CarkSeek\CarSeek\BaseApp\static\plugins\bootstrap-3.4.1-dist\js" />
+      <recent name="E:\IT\semester2\IT\CarseekDream\pythonProject\CarkSeek\CarSeek\BaseApp\static\plugins\bootstrap-3.4.1-dist\images" />
       <recent name="E:\IT\semester2\IT\CarseekDream\pythonProject\CarkSeek\CarSeek\BaseApp\static\plugins\bootstrap-3.4.1-dist\css" />
     </key>
   </component>
