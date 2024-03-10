@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .forms import CarSeekUserCreationForm
+
+from .models import Car
+from .forms import CarSeekUserCreationForm, CarDetailsUploadForm
 
 
 # HOME PAGE VIEWS
@@ -63,10 +65,25 @@ def userProfile(request, pk):
     context = {'pk':pk}
     return render(request, 'BaseApp/profile.html', context)
 def searchPage(request):
-    return render(request, "search.html")
+    cars = Car.objects.all()
+    context = {'cars':cars}
+    return render(request, "search.html", context)
 
 
 
 def layout(request):
     return render(request, "layout.html")
 
+
+def uploadCarDetails(request):
+    if request.method == 'POST':
+        form = CarDetailsUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            car = form.save(commit=False)
+            car.posted_by = request.user
+            car.save()
+            return redirect('home')  # Redirect to success page or another URL
+    else:
+        form = CarDetailsUploadForm()
+
+    return render(request, 'car_create.html', {'form': form})
