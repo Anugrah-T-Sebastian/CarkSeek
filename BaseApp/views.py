@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.db.models import Q
+
 from django.contrib.auth.models import User
 
 from .models import Car
 from .forms import CarSeekUserCreationForm, CarDetailsUploadForm
 
+
+def layout(request):
+    return render(request, "layout.html")
 
 # HOME PAGE VIEWS
 def home(request):
@@ -64,15 +69,34 @@ def userProfile(request, pk):
 
     context = {'pk':pk}
     return render(request, 'BaseApp/profile.html', context)
+
+# SEARCH PAGE
 def searchPage(request):
+    if request.method == 'POST':
+        search_input = request.POST.get('search-input')
+        start_date = request.POST.get('start-date')
+        start_time = request.POST.get('start-time')
+        end_date = request.POST.get('end-date')
+        end_time = request.POST.get('end-time')
+
+        filter_conditions = Q(brand__icontains=search_input) | Q(model__icontains=search_input)
+        if start_date and end_date:
+            filter_conditions &= ~Q(unavailable_dates__date__range=[start_date, end_date])
+
+        cars = Car.objects.filter(filter_conditions)
+        context = {'cars': cars}
+        return render(request, "search.html", context)
+        
     cars = Car.objects.all()
     context = {'cars':cars}
     return render(request, "search.html", context)
 
+# CAR PAGES
+def carDetailsPage(request, pk):
+    car = Car.objects.get(id=pk)
 
-
-def layout(request):
-    return render(request, "layout.html")
+    context = {'car':car}
+    return render(request, 'BaseApp/car_details.html', context)
 
 
 def uploadCarDetails(request):

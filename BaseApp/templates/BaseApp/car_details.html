@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} {% block content %}
+<div>
+  <div style="border: 2px solid black; padding: 10px">
+    <img
+      src="{{car.image.url}}"
+      alt=""
+      style="max-width: 100%; height: auto; width: 600px; height: 450px"
+    />
+    <hr />
+    <span style="color: blue">Posted by: {{car.posted_by}}</span><br />
+    <span style="color: green">Brand: {{car.brand}}</span><br />
+    <span style="color: red">Model: {{car.model}}</span><br />
+    <span style="color: purple">Rate: {{car.rental_rate_per_day}}</span><br />
+    <span style="color: orange">Postcode: {{car.location}}</span><br />
+  </div>
+</div>
+{% endblock %}
