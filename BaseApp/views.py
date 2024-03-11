@@ -1,8 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
 from django.db.models import Q
 
 from django.contrib.auth.models import User
+
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import SimpleDocTemplate, Paragraph
+
+import markdown2
+
 
 from .models import Car
 from .forms import CarSeekUserCreationForm, CarDetailsUploadForm
@@ -64,11 +74,27 @@ def registerPage(request):
     context = {'form':form}
     return render(request, 'BaseApp/register.html', context)
 
-# USER-PROFILE PAGE
-def userProfile(request, pk):
+# USER-PROFILE PAGES
+def userProfile(request):
 
-    context = {'pk':pk}
-    return render(request, 'BaseApp/profile.html', context)
+    context = {'page':'index'}
+    return render(request, 'BaseApp/user_index.html', context)
+
+def userAbout(request):
+    context = {'page':'about'}
+    return render(request, 'BaseApp/user_about.html', context)
+
+def userHistory(request):
+    context = {'page':'history'}
+    return render(request, 'BaseApp/user_history.html', context)
+
+def userContact(request):
+    context = {'page':'contact'}
+    return render(request, 'BaseApp/user_contact.html', context)
+
+def userChatbox(request):
+    context = {'page':'chatbox'}
+    return render(request, 'BaseApp/user_chatbox.html', context)
 
 # SEARCH PAGE
 def searchPage(request):
@@ -111,3 +137,37 @@ def uploadCarDetails(request):
         form = CarDetailsUploadForm()
 
     return render(request, 'car_create.html', {'form': form})
+
+def generate_pdf(request):
+    # Replace 'path/to/your/markdown/file.md' with the actual path to your Markdown file
+    markdown_file_path = './ContractTemplate.md'
+
+    with open(markdown_file_path, 'r', encoding='utf-8') as file:
+        markdown_content = file.read()
+
+    # Convert Markdown to HTML
+    html_content = markdown2.markdown(markdown_content)
+
+    # Create a PDF file
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="markdown_to_pdf.pdf"'
+
+    # Create the PDF object
+    pdf_buffer = HttpResponse(content_type='application/pdf')
+    pdf_buffer['Content-Disposition'] = 'filename="markdown_to_pdf.pdf"'
+    doc = SimpleDocTemplate(pdf_buffer, pagesize=letter)
+
+    # Create a style sheet
+    styles = getSampleStyleSheet()
+
+    # Create a Paragraph with the HTML content
+    html_paragraph = Paragraph(html_content, styles["BodyText"])
+
+    # Build the PDF document
+    doc.build([html_paragraph])
+
+    # Get the value of the BytesIO buffer and write it to the response
+    pdf_value = pdf_buffer.getvalue()
+    response.write(pdf_value)
+
+    return response

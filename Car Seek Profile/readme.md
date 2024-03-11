@@ -1,1 +1,0 @@
-Including five pages, index, about, chatbox, contact and history. Index is user profile page. About is notification page. Contact is report damage page. History is purchase history page. Chatbox is message page.

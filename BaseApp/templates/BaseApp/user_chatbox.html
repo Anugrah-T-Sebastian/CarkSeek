@@ -1,0 +1,175 @@
+{% extends 'user_profile_layout.html' %} {% block content%}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="{% url 'user-profile' %}">Profile</a></li>
+    <li class="active">Message</li>
+  </ol>
+
+  <div class="row">
+    <!-- Article main content -->
+    <article class="col-md-9 maincontent">
+      <header class="page-header">
+        <h1 class="page-title">Chat Interface</h1>
+      </header>
+
+      <!-- 聊天框代码开始 -->
+      <div class="chat-container">
+        <!-- 联系人列表（可选） -->
+        <div class="col-md-4">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active"
+              >John Doe</a
+            >
+            <a href="#" class="list-group-item list-group-item-action"
+              >Jane Smith</a
+            >
+            <a href="#" class="list-group-item list-group-item-action"
+              >Bob Williams</a
+            >
+            <!-- 更多联系人 -->
+          </div>
+        </div>
+
+        <!-- 聊天消息区 -->
+        <div class="col-md-8">
+          <div class="chatHead bg-dark text-white mb-3 p-3">
+            <strong>John Doe</strong>
+            <!-- 当前聊天的联系人名称 -->
+          </div>
+          <div class="chatMessages p-3" style="height: 400px; overflow-y: auto">
+            <!-- 用户A的消息 -->
+            <div class="message mb-3 text-end">
+              <div
+                class="text user-a p-3 bg-primary text-white d-inline-block rounded"
+              >
+                Hi Jane, how are you today?
+              </div>
+            </div>
+            <!-- 用户B的消息 -->
+            <div class="message mb-3 text-start">
+              <div
+                class="text user-b p-3 bg-secondary text-white d-inline-block rounded"
+              >
+                I'm good, thanks for asking! What about you?
+              </div>
+            </div>
+            <div class="message mb-3 text-end">
+              <div
+                class="text user-a p-3 bg-primary text-white d-inline-block rounded"
+              >
+                Hi Jane, how are you today?
+              </div>
+            </div>
+            <!-- 用户B的消息 -->
+            <div class="message mb-3 text-start">
+              <div
+                class="text user-b p-3 bg-secondary text-white d-inline-block rounded"
+              >
+                I'm good, thanks for asking! What about you?
+              </div>
+            </div>
+            <div class="message mb-3 text-end">
+              <div
+                class="text user-a p-3 bg-primary text-white d-inline-block rounded"
+              >
+                Hi Jane, how are you today?
+              </div>
+            </div>
+            <!-- 用户B的消息 -->
+            <div class="message mb-3 text-start">
+              <div
+                class="text user-b p-3 bg-secondary text-white d-inline-block rounded"
+              >
+                I'm good, thanks for asking! What about you?
+              </div>
+            </div>
+            <div class="message mb-3 text-end">
+              <div
+                class="text user-a p-3 bg-primary text-white d-inline-block rounded"
+              >
+                Hi Jane, how are you today?
+              </div>
+            </div>
+            <!-- 用户B的消息 -->
+            <div class="message mb-3 text-start">
+              <div
+                class="text user-b p-3 bg-secondary text-white d-inline-block rounded"
+              >
+                I'm good, thanks for asking! What about you?
+              </div>
+            </div>
+            <div class="message mb-3 text-end">
+              <div
+                class="text user-a p-3 bg-primary text-white d-inline-block rounded"
+              >
+                Hi Jane, how are you today?
+              </div>
+            </div>
+            <!-- 用户B的消息 -->
+            <div class="message mb-3 text-start">
+              <div
+                class="text user-b p-3 bg-secondary text-white d-inline-block rounded"
+              >
+                I'm good, thanks for asking! What about you?
+              </div>
+            </div>
+            <div class="message mb-3 text-end">
+              <div
+                class="text user-a p-3 bg-primary text-white d-inline-block rounded"
+              >
+                Hi Jane, how are you today?
+              </div>
+            </div>
+            <!-- 用户B的消息 -->
+            <div class="message mb-3 text-start">
+              <div
+                class="text user-b p-3 bg-secondary text-white d-inline-block rounded"
+              >
+                I'm good, thanks for asking! What about you?
+              </div>
+            </div>
+            <!-- 更多消息 -->
+          </div>
+          <div class="chatInput bg-light p-3">
+            <form class="d-flex">
+              <input
+                type="text"
+                class="form-control me-2"
+                placeholder="Type a message..."
+              />
+              <button class="btn btn-primary">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- 聊天框代码结束 -->
+    </article>
+    <!-- /Article -->
+
+    <!-- Sidebar -->
+    <aside class="col-sm-3 sidebar sidebar-right">
+      <div class="panel contact">
+        <h4>Address</h4>
+        <ul>
+          <li><i class="fa fa-phone"></i>1-123-345-6789</li>
+          <li>
+            <a href="#"
+              ><i class="fa fa-envelope-o"></i> contact@webthemez.com</a
+            >
+          </li>
+          <li>
+            <i class="fa fa-flag"></i>123 Smith Drive, Baltimore, MD 21212
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <!-- /Sidebar -->
+  </div>
+</div>
+<!-- /container -->
+
+{% endblock content%}

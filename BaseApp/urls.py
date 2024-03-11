@@ -9,10 +9,17 @@ urlpatterns = [
     path('register/', views.registerPage, name='register'),
     path('search/',views.searchPage, name='search'),
     path('layout/',views.layout),
-    
+   
 
-    path('profile/<str:pk>', views.userProfile, name="user-profile"),
+    path('profile', views.userProfile, name="user-profile"),
+    path('profile/about', views.userAbout, name="user-about"),
+    path('profile/history', views.userHistory, name="user-history"),
+    path('profile/contact', views.userContact, name="user-contact"),
+    path('profile/chatbox', views.userChatbox, name="user-chatbox"),
 
     path('car-details/<str:pk>', views.carDetailsPage, name="car-details"),
     path('car-details-upload', views.uploadCarDetails, name='car-details-upload'),
+    path('generate-pdf/', views.generate_pdf, name='generate_pdf'),
+
+
 ]
