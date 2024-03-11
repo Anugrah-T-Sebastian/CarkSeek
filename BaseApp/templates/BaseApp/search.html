@@ -6,37 +6,47 @@
       <h2 style="font-size: 2em">Unbeatable Rates from Top Rental Brands</h2>
     </div>
   </div>
-  <form class="form-inline justify-content-center my-2 my-lg-0">
+  <form
+    class="form-inline justify-content-center my-2 my-lg-0"
+    method="POST"
+    action=""
+  >
+    {% csrf_token%}
     <input
       class="form-control"
       type="search"
       placeholder="Search"
       aria-label="Search"
       style="width: 40%; margin-right: 1%"
+      name="search-input"
     />
     <input
       type="date"
       class="form-control"
       placeholder="Start Date"
       style="margin-right: 1%"
+      name="start-date"
     />
     <input
       type="time"
       class="form-control"
       placeholder="Start Time"
       style="margin-right: 1%"
+      name="start-time"
     />
     <input
       type="date"
       class="form-control"
       placeholder="End Date"
       style="margin-right: 1%"
+      name="end-date"
     />
     <input
       type="time"
       class="form-control"
       placeholder="End Time"
       style="margin-right: 1%"
+      name="end-time"
     />
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -44,16 +54,19 @@
 
 <!-- HANDLE THE CAR LISTINGS -->
 {% for car in cars %}
-<div style="border: 2px solid black; padding: 10px">
-  <img
-    src="{{car.image.url}}"
-    alt=""
-    style="max-width: 100%; height: auto; width: 200px; height: 150px"
-  />
-  <span style="color: blue">Posted by: {{car.posted_by}}</span><br />
-  <span style="color: green">Brand: {{car.brand}}</span><br />
-  <span style="color: red">Model: {{car.model}}</span><br />
-  <span style="color: purple">Rate: {{car.rental_rate_per_day}}</span><br />
-  <span style="color: orange">Postcode: {{car.location}}</span><br />
-</div>
+<a href="{% url 'car-details' car.id%}">
+  <div style="border: 2px solid black; padding: 10px">
+    <img
+      src="{{car.image.url}}"
+      alt=""
+      style="max-width: 100%; height: auto; width: 200px; height: 150px"
+    />
+    <span style="color: blue">Posted by: {{car.posted_by}}</span><br />
+    <span style="color: green">Brand: {{car.brand}}</span><br />
+    <span style="color: red">Model: {{car.model}}</span><br />
+    <span style="color: purple">Rate: {{car.rental_rate_per_day}}</span><br />
+    <span style="color: orange">Postcode: {{car.location}}</span><br />
+  </div>
+</a>
+
 {% endfor%} {% endblock %}

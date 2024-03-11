@@ -13,5 +13,6 @@ urlpatterns = [
 
     path('profile/<str:pk>', views.userProfile, name="user-profile"),
 
+    path('car-details/<str:pk>', views.carDetailsPage, name="car-details"),
     path('car-details-upload', views.uploadCarDetails, name='car-details-upload'),
 ]
