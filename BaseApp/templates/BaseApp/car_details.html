@@ -1,17 +1,65 @@
-{% extends 'layout.html' %} {% block content %}
-<div>
-  <div style="border: 2px solid black; padding: 10px">
-    <img
-      src="{{car.image.url}}"
-      alt=""
-      style="max-width: 100%; height: auto; width: 600px; height: 450px"
-    />
-    <hr />
-    <span style="color: blue">Posted by: {{car.posted_by}}</span><br />
-    <span style="color: green">Brand: {{car.brand}}</span><br />
-    <span style="color: red">Model: {{car.model}}</span><br />
-    <span style="color: purple">Rate: {{car.rental_rate_per_day}}</span><br />
-    <span style="color: orange">Postcode: {{car.location}}</span><br />
+{% extends 'layout.html' %}
+
+{% block css %}
+<style>
+  .card-img-top {
+    object-fit: cover;
+    width: auto;
+    max-height: 450px;
+  }
+  .card-title {
+    font-size: 1.5em; /* 车型的字体比其他信息大 */
+  }
+  .card-text {
+    font-size: 1.2em; /* 正常信息字体大小 */
+  }
+  .detail-section {
+    margin-top: 20px; /* 图片下方信息与图片之间的间距 */
+  }
+  .schedule-form {
+    margin-top: 20px; /* 表单与上方卡片的间距 */
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <!-- Image and car details column -->
+    <div class="col-md-8">
+      <div class="card">
+        <img class="card-img-top" src="{{ car.image.url }}" alt="Image of {{ car.brand }} {{ car.model }}">
+        <div class="card-body detail-section">
+          <h3 class="card-title">{{ car.brand }} {{ car.model }}</h3>
+          <p class="card-text">Posted by: {{ car.posted_by }}</p>
+          <p class="card-text">Rate per day: £{{ car.rental_rate_per_day }}</p>
+          <p class="card-text">Location: {{ car.location }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Schedule and checkout column -->
+    <div class="col-md-4 schedule-form">
+      <form>
+        <div class="form-group">
+          <label for="start-date">Start Date:</label>
+          <input type="date" id="start-date" name="start-date" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="start-time">Start Time:</label>
+          <input type="time" id="start-time" name="start-time" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="end-date">End Date:</label>
+          <input type="date" id="end-date" name="end-date" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="end-time">End Time:</label>
+          <input type="time" id="end-time" name="end-time" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Check Out</button>
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}
