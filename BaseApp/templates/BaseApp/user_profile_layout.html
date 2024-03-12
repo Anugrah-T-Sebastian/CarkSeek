@@ -21,6 +21,8 @@
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
+	 {% block css %}
+	 {% endblock %}
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -41,7 +43,7 @@
 					{% if request.user.is_authenticated %}
 					<li><a href="{% url 'logout' %}">Logout</a></li>
 					{% else %}
-					<li><a href="{% url 'login' %}">Login</a></li>
+					<li><a href="{% url 'login' %}">Login/Register</a></li>
 					{% endif %}
 				</ul>
 			</div><!--/.nav-collapse -->
