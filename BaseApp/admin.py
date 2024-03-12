@@ -1,7 +1,9 @@
 from django.contrib import admin
 
-from .models import CarSeekUser, Car
+from .models import CarSeekUser, Car, UnavailableDate, RentalAgreement
 
+# Registered models 
 admin.site.register(CarSeekUser)
 admin.site.register(Car)
-# Register your models here.
+admin.site.register(UnavailableDate)
+admin.site.register(RentalAgreement)

@@ -14,8 +14,8 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph
 import markdown2
 
 
-from .models import Car
-from .forms import CarSeekUserCreationForm, CarDetailsUploadForm
+from .models import Car, RentalAgreement
+from .forms import CarSeekUserCreationForm, CarDetailsUploadForm, RentalAgreementForm
 
 
 def layout(request):
@@ -85,7 +85,11 @@ def userAbout(request):
     return render(request, 'BaseApp/user_about.html', context)
 
 def userHistory(request):
-    context = {'page':'history'}
+    rental_agreements = RentalAgreement.objects.filter(renter=request.user)
+    context = {
+        'page': 'history',
+        'rental_agreements': rental_agreements
+    }
     return render(request, 'BaseApp/user_history.html', context)
 
 def userContact(request):
@@ -148,9 +152,28 @@ def searchPage(request):
 def carDetailsPage(request, pk):
     car = Car.objects.get(id=pk)
 
-    context = {'car':car}
-    return render(request, 'BaseApp/car_details.html', context)
+    if request.method == 'POST':
+        form = RentalAgreementForm(request.POST)  # Assuming you have a form for creating rental agreements
+        if form.is_valid():
+            # Create a RentalAgreement object but don't save it yet
+            rental_agreement = form.save(commit=False)
 
+            # Assuming you need to associate the renter with the current user
+            rental_agreement.renter = request.user  # Assuming request.user is the current logged-in user
+            rental_agreement.car = car
+
+            # Now save the rental agreement object
+            rental_agreement.save()
+
+            # Optionally, you can redirect the user to a success page or another view
+            print("RentalAgreement CREATED")
+            return redirect('user-history')  # Assuming 'success_page' is the name of your success page URL pattern
+    else:
+        print("RentalAgreement NOT CREATED")
+        form = RentalAgreementForm()
+
+    context = {'car':car, 'form':form}
+    return render(request, 'BaseApp/car_details.html', context)
 
 def uploadCarDetails(request):
     if request.method == 'POST':
@@ -164,6 +187,7 @@ def uploadCarDetails(request):
         form = CarDetailsUploadForm()
 
     return render(request, 'car_create.html', {'form': form})
+
 
 def generate_pdf(request):
     # Replace 'path/to/your/markdown/file.md' with the actual path to your Markdown file

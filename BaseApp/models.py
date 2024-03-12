@@ -30,3 +30,13 @@ class Car(models.Model):
     def __str__(self):
         return f"{self.posted_by} {self.brand} {self.model}"
     
+class RentalAgreement(models.Model):
+    renter = models.ForeignKey(CarSeekUser, on_delete=models.CASCADE, blank=False, null=False)
+    car = models.ForeignKey(Car, on_delete=models.DO_NOTHING, related_name='rented_cars')
+
+    rental_start_date = models.DateField()
+    rental_end_date = models.DateField()
+
+    def __str__(self):
+        return f"Rental Agreement for {self.car.brand} {self.car.model} {self.car.posted_by.username} - Renter: {self.renter.username}"
+    
