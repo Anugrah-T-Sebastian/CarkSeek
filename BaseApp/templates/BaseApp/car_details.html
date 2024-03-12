@@ -59,13 +59,14 @@
 
       <!-- Schedule and checkout column -->
       <div class="col-md-4 schedule-form">
-        <form>
+        <form method="POST" action="">
+          {% csrf_token %}
           <div class="form-group">
             <label for="start-date">Start Date:</label>
             <input
               type="date"
               id="start-date"
-              name="start-date"
+              name="rental_start_date"
               class="form-control"
             />
           </div>
@@ -83,7 +84,7 @@
             <input
               type="date"
               id="end-date"
-              name="end-date"
+              name="rental_end_date"
               class="form-control"
             />
           </div>

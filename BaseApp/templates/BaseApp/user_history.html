@@ -1,16 +1,52 @@
-{% extends 'user_profile_layout.html' %} {% block content%}
-	<header id="head" class="secondary"></header>
-	<div class="container">
+{% extends 'user_profile_layout.html' %}
+<!-- CSS Style -->
+{% block css %}
+<style>
+  .rental-agreement-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 110rem;
+  }
 
-		<ol class="breadcrumb">
-			<li><a href="{% url 'user-profile' %}">Profile</a></li>
-			<li class="active">History</li>
-		</ol>
+  .rental-agreement-item a {
+    text-decoration: none;
+    font-weight: bold;
+  }
 
-		<div class="row">
-			
-			<!-- Article main content -->
-			<!--<article class="col-sm-8 maincontent">
+  .rental-agreement-item h5 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  .car-details {
+    color: #666;
+  }
+
+  .car-brand {
+    margin-right: 10px;
+  }
+
+  .car-model {
+    font-style: italic;
+  }
+</style>
+{% endblock %}
+<!-- /CSS Style -->
+
+<!-- BODY content -->
+{% block content%}
+<header id="head" class="secondary"></header>
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="{% url 'user-profile' %}">Profile</a></li>
+    <li class="active">History</li>
+  </ol>
+
+  <div class="row">
+    <!-- Article main content -->
+    <!--<article class="col-sm-8 maincontent">
 				<header class="page-header">
 					<h1 class="page-title">Carseek Privacy Policy and Practices</h1>
 				</header>
@@ -23,27 +59,32 @@
 				<p>We hope this privacy policy settles any uncertainty you may have had about Internet security at Carseek. We take security on the web seriously and appreciate your trust. Contact us if you have any questions or concerns about security at Carseek.com</p>
 				
 			</article>-->
-			<!-- /Article -->
-			
-			<!-- Sidebar -->
-			<aside class="col-sm-4 sidebar sidebar-right">
+    <!-- /Article -->
 
-				<div class="panel">
-					<h4>Your purchase history</h4>
-					<ul class="list-unstyled list-spaces">
-						<li><a href="">DD/MM/YY</a><br><span class="small text-muted">At ...</span></li>
-						<li><a href="">DD/MM/YY</a><br><span class="small text-muted">At ...</span></li>
-						<li><a href="">DD/MM/YY</a><br><span class="small text-muted">At ...</span></li>
-						<li><a href="">DD/MM/YY</a><br><span class="small text-muted">At ...</span></li>
-						<li><a href="">DD/MM/YY</a><br><span class="small text-muted">At ...</span></li>
-						<li><a href="">DD/MM/YY</a><br><span class="small text-muted">At ...</span></li>
-						<li><a href="">DD/MM/YY</a><br><span class="small text-muted">At ...</span></li>
-						<li><a href="">DD/MM/YY</a><br><span class="small text-muted">At ...</span></li>
-				</div>
-
-			</aside>
-			<!-- /Sidebar -->
-
-		</div>
-	</div>	<!-- /container -->
+    <!-- Sidebar -->
+    <aside class="col-sm-4 sidebar sidebar-right">
+      <div class="panel">
+        <h4>Your purchase history</h4>
+        <ul class="list-unstyled list-spaces">
+          {% for agreement in rental_agreements %}
+          <li class="rental-agreement-item">
+            <a href="">{{ agreement.rental_start_date|date:"d/m/Y" }}</a><br />
+            <h5>Dealer: {{ agreement.car.posted_by.username }}</h5>
+            <span class="car-details">
+              <span class="car-brand">{{ agreement.car.brand }}</span>
+              <span class="car-model">{{ agreement.car.model }}</span>
+            </span>
+          </li>
+          {% endfor%}
+        </ul>
+      </div>
+    </aside>
+    <!-- /Sidebar -->
+  </div>
+  {% for i in 'x'|rjust:20 %}
+  <br />
+  {% endfor %}
+</div>
+<!-- /container -->
 {% endblock content%}
+<!-- /BODY content -->
