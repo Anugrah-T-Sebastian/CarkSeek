@@ -58,19 +58,26 @@ def main():
         return
 
     # Randomly select 10 unique file names
-    writed_files = []
-    for i in range(500):
-        selected_file_names = fake.random.sample(file_names, 10)
+    # writed_files = []
+    # for i in range(500):
+    #     selected_file_names = fake.random.sample(file_names, 10)
 
-        for file_name in selected_file_names:
-            if file_name in writed_files:
-                continue
-            substrings = file_name.split('_')
-            brand = substrings[0].lower()
-            model = substrings[1].lower()
-            user = create_dummy_user()
-            create_dummy_car(user, brand, model, 'car_images/' + file_name)
-            writed_files.append(file_name)
+    unique_cars = []
+    for file_name in file_names:
+        # if file_name in writed_files:
+        #     continue
+        substrings = file_name.split('_')
+        brand = substrings[0].lower()
+        model = substrings[1].lower()
+        # user = create_dummy_user()
+        # create_dummy_car(user, brand, model, 'car_images/' + file_name)
+        # writed_files.append(file_name)
+        car = brand + " " + model
+        unique_cars.append(car.strip())
+        
+    unique_cars = list(set(unique_cars))
+    for i in unique_cars:
+        print(i)
 
 if __name__ == '__main__':
     main()

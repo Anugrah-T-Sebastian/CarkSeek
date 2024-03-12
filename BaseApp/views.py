@@ -97,23 +97,50 @@ def userChatbox(request):
     return render(request, 'BaseApp/user_chatbox.html', context)
 
 # SEARCH PAGE
+def get_car_models(vehicle_type):
+    suv_models = ['Fortuner', 'Sportage', 'BRV', 'Vitara', 'Prado', 'Land Cruiser']
+    sedan_models = ['Axio', 'Grace', 'Premio', 'Civic', 'City', 'Corolla', 'Prius']
+    roadster_models = ['S2000']  # Assuming S2000 is the intended roadster
+    
+    if vehicle_type.lower() == 'suv':
+        return suv_models
+    elif vehicle_type.lower() == 'sedan':
+        return sedan_models
+    elif vehicle_type.lower() == 'roadster':
+        return roadster_models
+    else:
+        return "Invalid vehicle type"
+
 def searchPage(request):
     if request.method == 'POST':
         search_input = request.POST.get('search-input')
         start_date = request.POST.get('start-date')
-        start_time = request.POST.get('start-time')
         end_date = request.POST.get('end-date')
-        end_time = request.POST.get('end-time')
+        rate = request.POST.get('rate')
+        postcode = request.POST.get('postcode')
 
-        filter_conditions = Q(brand__icontains=search_input) | Q(model__icontains=search_input)
+        filter_conditions = Q(location__icontains=postcode)
+        search_input_values = search_input.split()
+        for value in search_input_values:
+            filter_conditions &= Q(brand__icontains=value) | Q(model__icontains=value)
+        if rate:
+            filter_conditions &= Q(rental_rate_per_day__lt=rate)
         if start_date and end_date:
             filter_conditions &= ~Q(unavailable_dates__date__range=[start_date, end_date])
 
         cars = Car.objects.filter(filter_conditions)
         context = {'cars': cars}
         return render(request, "search.html", context)
-        
-    cars = Car.objects.all()
+    
+    param_value = request.GET.get('cartype')
+    if param_value:
+        car_models = get_car_models(param_value)
+        filter_conditions = Q()
+        for car_model in car_models:
+            filter_conditions |= Q(brand__icontains=car_model) | Q(model__icontains=car_model)
+        cars = Car.objects.filter(filter_conditions)
+    else:
+        cars = Car.objects.all()
     context = {'page':'search','cars':cars}
     return render(request, "search.html", context)
 
