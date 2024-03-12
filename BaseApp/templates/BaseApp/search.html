@@ -1,4 +1,32 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %}
+
+{% block css %}
+<style>
+  .card {
+    margin-bottom: 20px; /* 增加卡片之间的间距 */
+  }
+  .card .card-title {
+    font-size: 1.2em; /* 增加车型名称的字体大小 */
+  }
+  .card .card-body {
+    padding: 10px; /* 卡片内边距 */
+  }
+  .card .card-img-top {
+    width: 100%; /* 宽度为容器宽度的100% */
+    height: 250px; /* 设置固定高度 */
+    object-fit: cover; /* 保持图片比例并覆盖整个指定区域 */
+  }
+  .card-text {
+    font-size: 0.9em; /* 细节文本的大小 */
+  }
+  /* 增加搜索表单的下边距以增加间距 */
+  .search-form {
+    margin-bottom: 30px; /* 增加间距 */
+  }
+</style>
+{% endblock %}
+
+{% block content %}
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -6,12 +34,13 @@
       <h2 style="font-size: 2em">Unbeatable Rates from Top Rental Brands</h2>
     </div>
   </div>
+  <!-- 添加 search-form 类来控制表单的下边距 -->
   <form
-    class="form-inline justify-content-center my-2 my-lg-0"
+    class="form-inline justify-content-center my-2 my-lg-0 search-form"
     method="POST"
     action=""
   >
-    {% csrf_token%}
+    {% csrf_token %}
     <input
       class="form-control"
       type="search"
@@ -52,21 +81,23 @@
   </form>
 </div>
 
-<!-- HANDLE THE CAR LISTINGS -->
-{% for car in cars %}
-<a href="{% url 'car-details' car.id%}">
-  <div style="border: 2px solid black; padding: 10px">
-    <img
-      src="{{car.image.url}}"
-      alt=""
-      style="max-width: 100%; height: auto; width: 200px; height: 150px"
-    />
-    <span style="color: blue">Posted by: {{car.posted_by}}</span><br />
-    <span style="color: green">Brand: {{car.brand}}</span><br />
-    <span style="color: red">Model: {{car.model}}</span><br />
-    <span style="color: purple">Rate: {{car.rental_rate_per_day}}</span><br />
-    <span style="color: orange">Postcode: {{car.location}}</span><br />
+<!-- Car Listings -->
+<div class="container">
+  <div class="row">
+    {% for car in cars %}
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="card">
+        <img class="card-img-top" src="{{ car.image.url }}" alt="{{ car.brand }} {{ car.model }}">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+          <p class="card-text">Posted by: {{ car.posted_by }}</p>
+          <p class="card-text">Rate: £{{ car.rental_rate_per_day }}/day</p>
+          <p class="card-text">Location: {{ car.location }}</p>
+          <a href="{% url 'car-details' car.id %}" class="btn btn-primary mt-auto">View Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
   </div>
-</a>
-
-{% endfor%} {% endblock %}
+</div>
+{% endblock %}
