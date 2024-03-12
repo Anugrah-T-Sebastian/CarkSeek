@@ -114,7 +114,7 @@ def searchPage(request):
         return render(request, "search.html", context)
         
     cars = Car.objects.all()
-    context = {'cars':cars}
+    context = {'page':'search','cars':cars}
     return render(request, "search.html", context)
 
 # CAR PAGES

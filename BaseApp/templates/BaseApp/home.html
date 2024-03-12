@@ -1,236 +1,270 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Real Estate Page Template</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="..static\plugins\bootstrap-3.4.1-dist\css" >
+{% extends 'user_profile_layout.html' %} {% block content%}{% load static %}
 
-    <link href="..\..\static\plugins\bootstrap-3.4.1-dist\css\bootstrap-4.4.1.css" rel="stylesheet">
-
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">CarSeek</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-
-
-                <p class="mb-0"></p>
-                <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'logout' %}">Logout</a>
-
-                <a class="btn btn-outline-primary my-2 my-sm-0" href="{% url 'login' %}">Login</a>
-
-
-      </div>
-    </nav>
-    <div class="container mt-3">
-      <div class="row">
-        <div class="col-12">
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleControls" data-slide-to="1"></li>
-              <li data-target="#carouselExampleControls" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img class="d-block w-100" src="..\..\static\plugins\bootstrap-3.4.1-dist\images\cover.gif" alt="First slide">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-    </div>
-
-    <hr>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-12">
-          <div class="row">
-            <div class="col-sm-6 col-12">
-              <div class="card">
-                <img class="card-img-top" src="..\..\static\plugins\bootstrap-3.4.1-dist\images\400X300(1).gif" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">SUV</h5>
-                  <p class="card-text">An SUV, or Sport Utility Vehicle, is a versatile vehicle type that combines elements of road-going passenger cars with features from off-road vehicles, like higher ground clearance and four-wheel drive. SUVs are known for their spacious interiors, making them ideal for families and outdoor adventures.</p>
-                  <a href="#" class="btn btn-primary">Go to see</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-12">
-              <div class="card">
-                <img class="card-img-top" src="..\..\static\plugins\bootstrap-3.4.1-dist\images\400X300(2).gif" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Sedan</h5>
-                  <p class="card-text">A sedan is a type of passenger car that typically features a three-box configuration with separate compartments for the engine, passengers, and cargo. Sedans are characterized by their fixed B-pillars and usually have four doors. They are one of the most common car body styles, known for comfort and safety.</p>
-                  <a href="#" class="btn btn-primary">Go to see</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 col-12">
-              <div class="card">
-                <img class="card-img-top" src="..\..\static\plugins\bootstrap-3.4.1-dist\images\400X300(3).gif" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Limousine</h5>
-                  <p class="card-text">A limousine is a luxury vehicle driven by a chauffeur, with a partition between the driver's compartment and the passenger's compartment. Limousines are often elongated for more spacious interiors and are associated with opulence and prestige. They are commonly used for special occasions, such as weddings and corporate events.</p>
-                  <a href="#" class="btn btn-primary">Go to see</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-12">
-              <div class="card">
-                <img class="card-img-top" src="..\..\static\plugins\bootstrap-3.4.1-dist\images\400X300(4).gif" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Roadster</h5>
-                  <p class="card-text">A roadster is a convertible sports car designed for exhilarating performance and driving pleasure. Roadsters are typically two-seaters, have a soft top or a retractable hardtop, and focus on agility and fun driving dynamics. They are often associated with open-air motoring enjoyment.</p>
-                  <a href="#" class="btn btn-primary">Go to see</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <div class="col-lg-4 col-12">
-          <div class="row mx-0">
-            <div class="col-12 card bg-light mx-auto">
-              <h3 class="text-center card-header">Find Your Location</h3>
-              <form class="card-body">
-                <div class="form-group row">
-                  <label for="location1" class="col-form-label">Location</label>
-                  <select class="form-control" name="location" id="location1">
-                    <option value="">Any</option>
-                    <option value="">Glasgow</option>
-                    <option value="">Edinburgh</option>
-					  <option value="">London</option>
-					  <option value="">Bristol</option>
-					  <option value="">Birmingham</option>
-					  <option value="">Manchester</option>
-					  <option value="">Leeds</option>
-
-                  </select>
-                </div>
-                <div class="form-group row">
-                  <label for="pricefrom" class="col-form-label">Price From</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text" id="basic-addon1">￡</div>
+	<!-- Header -->
+	<header id="head">
+	 <div class="container">
+            <div class="banner-content">
+                <div id="da-slider" class="da-slider">
+                    <div class="da-slide">
+                        <h2>Car Seek</h2>
+                        <p>Get Hassle free quotes on cars, financing and insurance.</p>
+                        <div class="da-img"></div>
                     </div>
-                    <input type="text" class="form-control" id="pricefrom" aria-describedby="basic-addon1">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="priceto" class="col-form-label">Price To</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text" id="basic-addon2">￡</div>
+                    <div class="da-slide">
+                        <h2>Quicker and Easier</h2>
+                        <p>Our reliable experts and user-friendly tools can help you buy the right car for the right price and save your time...</p>
+                        <div class="da-img"></div>
                     </div>
-                    <input type="text" class="form-control" id="priceto" aria-describedby="basic-addon2">
-                  </div>
+                    <div class="da-slide">
+                        <h2>Low Rate Financing</h2>
+                        <p>Easy website. Fast Approval.Competitive Low Rates.</p>
+                        <div class="da-img"></div>
+                    </div>
+                    <div class="da-slide">
+                        <h2>Plenty of Users</h2>
+                        <p>Find the best used car to buy online. Shop for cars by price, make and body type.</p>
+                        <div class="da-img"></div>
+                    </div>
+                    <nav class="da-arrows">
+                        <span class="da-arrows-prev"></span>
+                        <span class="da-arrows-next"></span>
+                    </nav>
                 </div>
-                <p class="text-center"><a href="#" class="btn btn-danger" role="button">Search </a></p>
-              </form>
             </div>
-            <div class="col-12">
-              <h3 class="text-center">Agents</h3>
-              <hr>
-              <div class="media">
-                <img class="mr-3" src="..\..\static\plugins\bootstrap-3.4.1-dist\images\64X64.gif" alt="Generic placeholder image">
-                <div class="media-body">
-                  <h5 class="mt-0">Vivian Alice</h5>
-                  <abbr title="Phone">P:</abbr> (123) 456-7890 <a href="mailto:#">first.last@example.com</a>
-                </div>
-              </div>
-              <div class="media mt-2">
-                <img class="mr-3" src="..\..\static\plugins\bootstrap-3.4.1-dist\images\64X64.gif" alt="Generic placeholder image">
-                <div class="media-body">
-                  <h5 class="mt-0">Linda Smith</h5>
-                  <abbr title="Phone">P:</abbr> (123) 456-7890 <a href="mailto:#">first.last@example.com</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </div>	
+	</header>
+	<!-- /Header -->
+
+	<!-- Intro -->
+	<div class="container text-center">
+		<br> 
+		<h2 >Visit our website today!</h2>
+		<p class="text-muted">
+			CarSeek provides a hassle-free approach to car buying that used car buyers and new car buyers alike love!
+		</p>
+	</div>
+	<!-- /Intro-->
+
+  <!-- CARS container -->
+	<div class="container">
     <hr>
-    <section>
-      <div class="container">
-        <div class="row">
-
-          <div class="col-md-12 col-12">
-            <h3>Our Services</h3>
-            <nav>
-              <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Insurance</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Location Service</a>
-                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Messenger Feedback</a>
-              </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <p class="text-center mt-2"><img src="..\..\static\plugins\bootstrap-3.4.1-dist\images\insurance.gif" alt=""></p>
-                <p>Offer users the option to obtain insurance coverage for their rental, specifying the cost and the areas of coverage.</p>
-              </div>
-              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <p class="text-center mt-2"><img src="..\..\static\plugins\bootstrap-3.4.1-dist\images\pick and drop.gif" alt=""></p>
-                <p>The website must incorporate functionality to determine the nearest store location and provide options for car pick-up and drop-off based on the user-provided location.</p>
-              </div>
-              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                <p class="text-center mt-2"><img src="..\..\static\plugins\bootstrap-3.4.1-dist\images\messenger.gif" alt=""></p>
-                <p>If users need to communicate with customer representatives for inquiries, feedback, or complaints, they can utilize the website's built-in messenger application to do so.</p>
-              </div>
+            <div class="heading text-center">
+                <!-- Heading -->
+                <h2>What we offer</h2>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <hr>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-12">
-          <div class="row">
-            <div class="col-lg-12 col-12">
-              <h3>About Us</h3>
-              <hr>
-              <p>CarSeek is an innovative platform designed to simplify the vehicle rental process for both dealers and customers alike. Offering a diverse array of rental options, CarSeek provides a seamless experience for individuals seeking reliable transportation solutions. Dealers can effortlessly list their vehicles on our platform, expanding their reach to a broader audience of potential renters.</p>
-              <p>Our intuitive interface empowers customers to explore rental options by category, browse listings with ease, and locate nearby rental outlets. With our comprehensive insurance coverage, customers can enjoy peace of mind knowing their rental experience is safeguarded.</p>
+            <div class="row iconColor">
+                <div class="col-md-4 col-sm-4">
+                    <h3><i class="fa fa-desktop color"></i>&nbsp; SUV</h3>
+                    <!-- Paragraph -->
+                    <article>
+                      <div class="card">
+                        <img
+                          class="card-img-top"
+                          src="{% static 'plugins/bootstrap-3.4.1-dist/images/400X300(1).gif' %}"
+                          alt="Card image cap"
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title">SUV</h5>
+                          <p class="card-text">
+                            A sedan is a type of passenger car that typically features a
+                            three-box configuration with separate compartments for the
+                            engine, passengers, and cargo. Sedans are characterized by
+                            their fixed B-pillars and usually have four doors. They are
+                            one of the most common car body styles, known for comfort
+                            and safety.
+                          </p>
+                          <a href="#" class="btn btn-primary">Go to see</a>
+                        </div>
+                      </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <!-- Heading -->
+                    <h3><i class="fa fa-cloud color"></i>&nbsp;Sedan</h3>
+                    <!-- Paragraph -->
+                    <article>
+                      <div class="card">
+                        <img
+                          class="card-img-top"
+                          src="{% static 'plugins/bootstrap-3.4.1-dist/images/400X300(2).gif' %}"
+                          alt="Card image cap"
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title">Sedan</h5>
+                          <p class="card-text">
+                            A sedan is a type of passenger car that typically features a
+                            three-box configuration with separate compartments for the
+                            engine, passengers, and cargo. Sedans are characterized by
+                            their fixed B-pillars and usually have four doors. They are
+                            one of the most common car body styles, known for comfort
+                            and safety.
+                          </p>
+                          <a href="#" class="btn btn-primary">Go to see</a>
+                        </div>
+                      </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <!-- Heading -->
+                    <h3><i class="fa fa-home color"></i>&nbsp;Roadster</h3>
+                    <!-- Paragraph -->
+                    <article>
+                      <div class="card">
+                        <img
+                          class="card-img-top"
+                          src="{% static 'plugins/bootstrap-3.4.1-dist/images/400X300(4).gif' %}"
+                          alt="Card image cap"
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title">Roadster</h5>
+                          <p class="card-text">
+                            A sedan is a type of passenger car that typically features a
+                            three-box configuration with separate compartments for the
+                            engine, passengers, and cargo. Sedans are characterized by
+                            their fixed B-pillars and usually have four doors. They are
+                            one of the most common car body styles, known for comfort
+                            and safety.
+                          </p>
+                          <a href="#" class="btn btn-primary">Go to see</a>
+                        </div>
+                      </div>
+                    </article>
+                </div>
             </div>
+  </div>
+	<div class="container">
+		<!--<div class="jumbotron top-space">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque cursus erat vitae interdum. Nam vehicula, felis eu semper tincidunt, mauris risus ultricies dolor, a tristique arcu libero sit amet felis. Donec venenatis sed velit eget dignissim. Mauris tempor purus enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia do</p>
+     		<p class="text-right"><a class="btn btn-primary btn-large">Learn more..</a></p>
+  		</div> -->
 
-          </div>
-        </div>
-        <div class="col-md-4 col-12 mt-md-0 mt-2">
-          <h3>Contact Us</h3>
-          <hr>
-          <address>
-            <strong>The University of Glasgow</strong><br>
-            Jiatong, Li<br>
-            <abbr title="Phone">P:</abbr> (44) 01234567890
-          </address>
-          <address>
-            <strong>Full Name</strong><br>
-            <a href="mailto:#">first.last@example.com</a>
-          </address>
-        </div>
-      </div>
+  </div>	
+  <!-- /CARS container -->
+		
+	<!-- Highlights - jumbotron -->
+	<div class="jumbotron top-space">
+		<div class="container">
+			
+			<h3 class="text-center">User core Services</h3>
+			<h3 class="text-center"> </h3>
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<a href="{% url 'user-history' %}">
+						<div class="h-caption"><h4><i class="fa fa-arrows fa-2x circle"></i>Purchase history</h4></div>
+						<div class="h-body text-center">
+					</a>
+					<p>You can see your purchase history here.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<a href="{% url 'user-contact' %}">
+						<div class="h-caption"><h4><i class="fa fa-lightbulb-o fa-2x circle"></i>Report damage</h4></div>
+						<div class="h-body text-center">
+					</a>
+					<p>You can report any damage here.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<a href="{% url 'user-chatbox' %}">
+						<div class="h-caption"><h4><i class="fa fa-desktop fa-2x circle"></i>View messages</h4></div>
+						<div class="h-body text-center">
+					</a>
+					<p>Here is your chatbox.</p>
+					</div>
+				</div>
+			</div> <!-- /row  -->
+		
+		</div>
+	</div>
+	<!-- /Highlights -->
+
+	<div class="container">
+  <div class="row">
+    <div class='col-md-offset-2 col-md-8 text-center'>
+    <h2>And what did the other client say ...</h2>
     </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-offset-2 col-md-8'>
+      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+        <!-- Bottom Carousel Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#quote-carousel" data-slide-to="1"></li>
+          <li data-target="#quote-carousel" data-slide-to="2"></li>
+        </ol>
+        
+        <!-- Carousel Slides / Quotes -->
+        <div class="carousel-inner">
+        
+          <!-- Quote 1 -->
+          <div class="item active">
+            <blockquote>
+              <div class="row">
+                <div class="col-sm-3 text-center">
+                  <img class="img-circle" src="{% static 'assets/images/person_1.png' %}" style="width: 100px;height:100px;">
+                </div>
+                <div class="col-sm-9">
+                  <p>This is the best experience I have ever had!</p>
+                  <small>Taylor</small>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+          <!-- Quote 2 -->
+          <div class="item">
+            <blockquote>
+              <div class="row">
+                <div class="col-sm-3 text-center">
+                  <img class="img-circle" src="{% static 'assets/images/person_2.png' %}" style="width: 100px;height:100px;">
+                </div>
+                <div class="col-sm-9">
+                  <p>Nice car!Nice company!</p>
+                  <small>James</small>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+          <!-- Quote 3 -->
+          <div class="item">
+            <blockquote>
+              <div class="row">
+                <div class="col-sm-3 text-center">
+                  <img class="img-circle" src="{% static 'assets/images/person_3.png' %}" style="width: 100px;height:100px;">
+                </div>
+                <div class="col-sm-9">
+                  <p>I don't know how to describe it well in language.</p>
+                  <small>Li</small>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+        </div>
+        
+        <!-- Carousel Buttons Next/Prev -->
+        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+      </div>                          
+    </div>
+  </div>
+</div>
+	
+	<!-- Social links. @TODO: replace by link/instructions in template -->
+	<section id="social">
+		<div class="container">
+			<div class="wrapper clearfix">
+				<!-- AddThis Button BEGIN -->
+				<div class="addthis_toolbox addthis_default_style">
+				<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+				<a class="addthis_button_tweet"></a>
+				<a class="addthis_button_linkedin_counter"></a>
+				<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+				</div>
+				<!-- AddThis Button END -->
+			</div>
+		</div>
+	</section>
+	<!-- /social links -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.4.1.js"></script>
-  </body>
-</html>
+
+{% endblock content%}

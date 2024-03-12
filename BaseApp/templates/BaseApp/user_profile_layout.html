@@ -33,11 +33,16 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
+					{% if page == 'search' %}<li class="active">{% else %}<li>{% endif %}<a href="{% url 'search' %}">Search Cars</a></li>
 					{% if page == 'index' %}<li class="active">{% else %}<li>{% endif %}<a href="{% url 'user-profile' %}">Profile</a></li>
-					{% if page == 'about' %}<li class="active">{% else %}<li>{% endif %}<a href="{% url 'user-about' %}">Notification</a></li>
+					{% if page == 'chatbox' %}<li class="active">{% else %}<li>{% endif %}<a href="{% url 'user-chatbox' %}">Messages</a></li>
+					{% if page == 'about' %}<li class="active">{% else %}<li>{% endif %}<a href="{% url 'user-about' %}">About</a></li>
 					{% if page == 'history' %}<li class="active">{% else %}<li>{% endif %}<a href="{% url 'user-history' %}">History</a></li>
-					{% if page == 'contact' %}<li class="active">{% else %}<li>{% endif %}<a href="{% url 'user-contact' %}">Contact</a></li>
-					{% if page == 'chatbox' %}<li class="active">{% else %}<li>{% endif %}<a href="{% url 'user-chatbox' %}">Message</a></li>
+					{% if request.user.is_authenticated %}
+					<li><a href="{% url 'logout' %}">Logout</a></li>
+					{% else %}
+					<li><a href="{% url 'login' %}">Login</a></li>
+					{% endif %}
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
