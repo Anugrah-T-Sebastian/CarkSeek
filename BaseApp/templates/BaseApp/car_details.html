@@ -1,33 +1,62 @@
-{% extends 'user_profile_layout.html' %} {% block css %}
+{% extends 'user_profile_layout.html' %}
+<!-- Styles block -->
+{% block css %}
 <style>
   .card-img-top {
     object-fit: cover;
     width: auto;
     max-height: 450px;
   }
+
   .card-title {
-    font-size: 1.5em; /* 车型的字体比其他信息大 */
+    font-size: 1.5em;
     font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
   }
+
   .card-text {
-    font-size: 1.2em; /* 正常信息字体大小 */
+    font-size: 1.2em;
+    line-height: 1.4;
+    color: #666;
+    margin-bottom: 15px;
   }
+
+  .card-text span {
+    color: #0e93ec;
+  }
+
   .detail-section {
-    margin-top: 20px; /* 图片下方信息与图片之间的间距 */
+    margin-top: 20px;
     font-weight: 600;
   }
+
   .schedule-form {
-    margin-top: 20px; /* 表单与上方卡片的间距 */
+    margin-top: 20px;
+  }
+
+  .map-container {
+    margin-top: 20px;
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 400px;
+    border: 0;
   }
 </style>
-{% endblock %} {% block content %}
+{% endblock %}
+<!-- /Styles block -->
+
+{% block content %}
 
 <header id="head" class="secondary"></header>
 
 <div class="container mt-4">
   <ol class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
     <li><a href="{% url 'search' %}">Search</a></li>
-    <li class="active">Car Dtails</li>
+    <li class="active">Car Details</li>
   </ol>
 
   <div class="row">
@@ -48,13 +77,26 @@
               {{ car.brand|title }} {{ car.model|title }}
             </h3>
             <hr />
-            <p class="card-text">Posted by: {{ car.posted_by }}</p>
+            <p class="card-text">Posted by: <span>{{ car.posted_by }}</span></p>
             <p class="card-text">
-              Rate per day: £{{ car.rental_rate_per_day }}
+              Rate per day: <span>£{{ car.rental_rate_per_day }}</span>
             </p>
-            <p class="card-text">Location: {{ car.location }}</p>
+            <p class="card-text">Location: <span>{{ car.location }}</span></p>
           </div>
         </div>
+      </div>
+
+      <!-- Google Maps iframe -->
+      <div class="col-md-4 map-container">
+        <iframe
+          width="600"
+          height="450"
+          frameborder="0"
+          style="border: 0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBlN1dmRbn8F_9hu55JrGH6eHs_y4nglfg&q={{ car.location }}"
+          allowfullscreen
+        >
+        </iframe>
       </div>
 
       <!-- Schedule and checkout column -->

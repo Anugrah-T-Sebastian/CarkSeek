@@ -1,6 +1,4 @@
-{% extends 'user_profile_layout.html' %}
-
-{% block css %}
+{% extends 'user_profile_layout.html' %} {% block css %}
 <style>
   .form-container {
     width: 400px;
@@ -26,25 +24,35 @@
     margin-top: 10px;
   }
 </style>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <header id="head" class="secondary"></header>
 <div class="container mt-4">
+  <ol class="breadcrumb">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li class="active"><a href="{% url 'user-profile' %}">Profile</a></li>
+    <li class="active">Add Car</li>
+  </ol>
   <div class="row">
     <article class="col-sm-12 maincontent">
       <header class="page-header">
-        <h1 class="page-title">Create a new car</h1>
+        <h1 class="page-title">Add New Car Details</h1>
       </header>
 
       <div class="form-container">
         <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.as_p }}
+          {% csrf_token %} {{ form.as_p }}
           <button type="submit" class="btn btn-success">Save</button>
         </form>
       </div>
     </article>
   </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
 </div>
 {% endblock %}
