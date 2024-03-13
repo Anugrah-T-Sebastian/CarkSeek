@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from django.http import HttpResponse
 from django.db.models import Q
 
@@ -24,35 +26,29 @@ def layout(request):
 # HOME PAGE VIEWS
 def home(request):
     print("Home test")
-    context = {}
+    page = 'home'
+    context = {'page':page}
     return render(request, 'BaseApp/home.html', context)
 
 
 # LOGIN/RGISTER PAGE VIEWS
 def loginPage(request):
     page = 'login'
-    print("Login test")
+    
     if request.user.is_authenticated:
         return redirect('home')
-    
-    if request.method ==  'POST':
+
+    if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
-        try:
-            print("USER:",username)
-            user = User.objects.get(username=username)
-        except:
-            # messages.error(request, 'User does not exist')
-            print('User does not exist')
-        
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
-            return redirect('home')
+            # Redirect to the previous page or 'home' if not available
+            next_page = request.GET.get('next', reverse('home'))
+            return redirect(next_page)
         else:
-            # messages.error(request, 'Username OR password does not exist')
             print('Username OR password does not exist')
 
     context = {'page': page}
@@ -67,14 +63,18 @@ def registerPage(request):
         form = CarSeekUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            login(request, user)  # Log the user in
+            print('Registration successful. You are now logged in.')
             return redirect('home')  # Redirect to home or any desired page after registration
+        else:
+            # Display form errors
+            print("INVALID FORM")
     else:
         form = CarSeekUserCreationForm()
-    context = {'form':form}
-    return render(request, 'BaseApp/register.html', context)
+    return render(request, 'BaseApp/register.html', {'form': form})
 
 # USER-PROFILE PAGES
+@login_required(login_url='login')
 def userProfile(request):
 
     context = {'page':'index'}
@@ -84,6 +84,7 @@ def userAbout(request):
     context = {'page':'about'}
     return render(request, 'BaseApp/user_about.html', context)
 
+@login_required(login_url='login')
 def userHistory(request):
     rental_agreements = RentalAgreement.objects.filter(renter=request.user)
     context = {
@@ -92,10 +93,12 @@ def userHistory(request):
     }
     return render(request, 'BaseApp/user_history.html', context)
 
+@login_required(login_url='login')
 def userContact(request):
     context = {'page':'contact'}
-    return render(request, 'BaseApp/user_contact.html', context)
+    return render(request, 'BaseApp/user_damage_report.html', context)
 
+@login_required(login_url='login')
 def userChatbox(request):
     context = {'page':'chatbox'}
     return render(request, 'BaseApp/user_chatbox.html', context)
@@ -149,6 +152,7 @@ def searchPage(request):
     return render(request, "search.html", context)
 
 # CAR PAGES
+@login_required(login_url='login')
 def carDetailsPage(request, pk):
     car = Car.objects.get(id=pk)
 
@@ -175,6 +179,8 @@ def carDetailsPage(request, pk):
     context = {'car':car, 'form':form}
     return render(request, 'BaseApp/car_details.html', context)
 
+
+@login_required(login_url='login')
 def uploadCarDetails(request):
     if request.method == 'POST':
         form = CarDetailsUploadForm(request.POST, request.FILES)
