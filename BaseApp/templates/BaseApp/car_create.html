@@ -1,7 +1,50 @@
-{% extends 'layout.html' %} {% block content %}
-<h2>Create a new car</h2>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Save</button>
-</form>
+{% extends 'user_profile_layout.html' %}
+
+{% block css %}
+<style>
+  .form-container {
+    width: 400px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px #aaa;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    padding: 20px 40px;
+  }
+
+  .form-container h2 {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    margin-top: 10px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<header id="head" class="secondary"></header>
+<div class="container mt-4">
+  <div class="row">
+    <article class="col-sm-12 maincontent">
+      <header class="page-header">
+        <h1 class="page-title">Create a new car</h1>
+      </header>
+
+      <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-success">Save</button>
+        </form>
+      </div>
+    </article>
+  </div>
+</div>
 {% endblock %}
