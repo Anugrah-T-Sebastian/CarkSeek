@@ -51,7 +51,8 @@
     <div class="container">
       <div class="contract-header">
         <h1>
-          Car Rental Contract: {{agreement.car.brand}} {{agreement.car.model}}
+          Car Rental Contract: {{agreement.car.brand|title}}
+          {{agreement.car.model|title}}
         </h1>
       </div>
       <div class="contract-details">

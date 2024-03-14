@@ -113,7 +113,7 @@ def generate_pdf(request, pk):
 @login_required(login_url='login')
 def userContact(request):
     if request.user.user_type == 'dealer':
-        return redirect('login')
+        return redirect('home')
     
     context = {'page':'contact'}
     return render(request, 'BaseApp/user_damage_report.html', context)
@@ -127,7 +127,7 @@ def userChatbox(request):
 def get_car_models(vehicle_type):
     suv_models = ['Fortuner', 'Sportage', 'BRV', 'Vitara', 'Prado', 'Land Cruiser']
     sedan_models = ['Axio', 'Grace', 'Premio', 'Civic', 'City', 'Corolla', 'Prius']
-    roadster_models = ['S2000']  # Assuming S2000 is the intended roadster
+    roadster_models = ['Roadster']  # Assuming S2000 is the intended roadster
     
     if vehicle_type.lower() == 'suv':
         return suv_models
