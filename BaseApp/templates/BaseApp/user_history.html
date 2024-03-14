@@ -62,14 +62,17 @@
 			</article>-->
     <!-- /Article -->
 
+    {% if request.user.user_type == 'renter' %}
     <!-- Sidebar -->
     <aside class="col-sm-4 sidebar sidebar-right">
       <div class="panel">
-        <h4>Your purchase history</h4>
+        <h3><strong>Your Purchase History</strong></h3>
         <ul class="list-unstyled list-spaces">
           {% for agreement in rental_agreements %}
           <li class="rental-agreement-item">
-            <a href="">{{ agreement.rental_start_date|date:"d/m/Y" }}</a><br />
+            <a href="{% url 'generate_pdf' agreement.id %}"
+              >{{ agreement.rental_start_date|date:"d/m/Y" }}</a
+            ><br />
             <h5>Dealer: {{ agreement.car.posted_by.username }}</h5>
             <span class="car-details">
               <span class="car-brand">{{ agreement.car.brand }}</span>
@@ -81,6 +84,29 @@
       </div>
     </aside>
     <!-- /Sidebar -->
+    {% else %}
+    <!-- Sidebar -->
+    <aside class="col-sm-4 sidebar sidebar-right">
+      <div class="panel">
+        <h4><strong>Your Letting History</strong></h4>
+        <ul class="list-unstyled list-spaces">
+          {% for agreement in rental_agreements %}
+          <li class="rental-agreement-item">
+            <a href="{% url 'generate_pdf' agreement.id %}"
+              >{{ agreement.rental_start_date|date:"d/m/Y" }}</a
+            ><br />
+            <h5>Renter: {{ agreement.car.posted_by.username }}</h5>
+            <span class="car-details">
+              <span class="car-brand">{{ agreement.car.brand }}</span>
+              <span class="car-model">{{ agreement.car.model }}</span>
+            </span>
+          </li>
+          {% endfor%}
+        </ul>
+      </div>
+    </aside>
+    <!-- /Sidebar -->
+    {% endif %}
   </div>
   {% for i in 'x'|rjust:20 %}
   <br />

@@ -1,23 +1,21 @@
+from io import BytesIO
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.http import HttpResponse
 from django.db.models import Q
+from django.template.loader import get_template
+
 
 from django.contrib.auth.models import User
-
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter
-from reportlab.lib import colors
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.platypus import SimpleDocTemplate, Paragraph
-
-import markdown2
 
 
 from .models import Car, RentalAgreement
 from .forms import CarSeekUserCreationForm, CarDetailsUploadForm, RentalAgreementForm
+
+from unittest import result
+from xhtml2pdf import pisa
 
 
 def layout(request):
@@ -86,15 +84,37 @@ def userAbout(request):
 
 @login_required(login_url='login')
 def userHistory(request):
-    rental_agreements = RentalAgreement.objects.filter(renter=request.user)
+    if request.user.user_type == 'renter':
+        rental_agreements = RentalAgreement.objects.filter(renter=request.user)
+    else:
+        rental_agreements = RentalAgreement.objects.filter(car__posted_by=request.user)
+
     context = {
         'page': 'history',
         'rental_agreements': rental_agreements
     }
     return render(request, 'BaseApp/user_history.html', context)
 
+def html2PDF(template_source, context_dict={}):
+    template = get_template(template_source)
+    html = template.render(context_dict)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("cp1252")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type="application/pdf")
+    return None
+
+def generate_pdf(request, pk):
+    agreement = RentalAgreement.objects.get(id=pk)
+    context = {'agreement': agreement}
+    pdf = html2PDF("contract.html", context)
+    return HttpResponse(pdf, content_type="application/pdf")
+
 @login_required(login_url='login')
 def userContact(request):
+    if request.user.user_type == 'dealer':
+        return redirect('login')
+    
     context = {'page':'contact'}
     return render(request, 'BaseApp/user_damage_report.html', context)
 
@@ -182,6 +202,8 @@ def carDetailsPage(request, pk):
 
 @login_required(login_url='login')
 def uploadCarDetails(request):
+    if request.user.user_type == 'renter':
+        return redirect('home')
     if request.method == 'POST':
         form = CarDetailsUploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -193,38 +215,3 @@ def uploadCarDetails(request):
         form = CarDetailsUploadForm()
 
     return render(request, 'car_create.html', {'form': form})
-
-
-def generate_pdf(request):
-    # Replace 'path/to/your/markdown/file.md' with the actual path to your Markdown file
-    markdown_file_path = './ContractTemplate.md'
-
-    with open(markdown_file_path, 'r', encoding='utf-8') as file:
-        markdown_content = file.read()
-
-    # Convert Markdown to HTML
-    html_content = markdown2.markdown(markdown_content)
-
-    # Create a PDF file
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="markdown_to_pdf.pdf"'
-
-    # Create the PDF object
-    pdf_buffer = HttpResponse(content_type='application/pdf')
-    pdf_buffer['Content-Disposition'] = 'filename="markdown_to_pdf.pdf"'
-    doc = SimpleDocTemplate(pdf_buffer, pagesize=letter)
-
-    # Create a style sheet
-    styles = getSampleStyleSheet()
-
-    # Create a Paragraph with the HTML content
-    html_paragraph = Paragraph(html_content, styles["BodyText"])
-
-    # Build the PDF document
-    doc.build([html_paragraph])
-
-    # Get the value of the BytesIO buffer and write it to the response
-    pdf_value = pdf_buffer.getvalue()
-    response.write(pdf_value)
-
-    return response

@@ -7,13 +7,13 @@
       <div id="da-slider" class="da-slider">
         <div class="da-slide">
           <h2>Car Seek</h2>
-          <p>Get Hassle free quotes on cars, financing and insurance.</p>
+          <p>Get Hassle free quotes on cars rental.</p>
           <div class="da-img"></div>
         </div>
         <div class="da-slide">
           <h2>Quicker and Easier</h2>
           <p>
-            Our reliable experts and user-friendly tools can help you buy the
+            Our reliable experts and user-friendly tools can help you rent the
             right car for the right price and save your time...
           </p>
           <div class="da-img"></div>
@@ -26,7 +26,7 @@
         <div class="da-slide">
           <h2>Plenty of Users</h2>
           <p>
-            Find the best used car to buy online. Shop for cars by price, make
+            Find the best used car to rent online. Shop for cars by price, make
             and body type.
           </p>
           <div class="da-img"></div>
@@ -44,11 +44,17 @@
 <!-- Intro -->
 <div class="container text-center">
   <br />
-  <h2>Visit our website today!</h2>
+  {% if request.user.user_type == 'renter' %}
+  <h2>Hello Renter! Access your services here</h2>
   <p class="text-muted">
-    CarSeek provides a hassle-free approach to car buying that used car buyers
-    and new car buyers alike love!
+    CarSeek provides a hassle-free approach to quicky rent a car for yourself!
   </p>
+  {% else %}
+  <h2>Hello Dealer! Access your services here</h2>
+  <p class="text-muted">
+    CarSeek provides a hassle-free approach to rent out your car!
+  </p>
+  {% endif%}
 </div>
 <!-- /Intro-->
 
@@ -62,7 +68,9 @@
       <div class="col-md-4 col-sm-4">
         <a href="{% url 'user-history' %}">
           <div class="h-caption">
-            <h4><i class="fa fa-arrows fa-2x circle"></i>Purchase history</h4>
+            <h4>
+              <i class="fa fa-credit-card fa-2x circle"></i>Purchase history
+            </h4>
           </div>
           <div class="h-body text-center">
             <p>You can see your purchase history here.</p>
@@ -103,7 +111,7 @@
       <div class="col-md-4 col-sm-4">
         <a href="{% url 'car-details-upload' %}">
           <div class="h-caption">
-            <h4><i class="fa fa-lightbulb-o fa-2x circle"></i>Add New Car</h4>
+            <h4><i class="fa fa-upload fa-2x circle"></i>Add New Car</h4>
           </div>
           <div class="h-body text-center">
             <p>You can add new car here.</p>
@@ -167,7 +175,8 @@
   </div>
 </div>
 <div class="container">
-  /<!--<div class="jumbotron top-space">
+  <hr />
+  <!--<div class="jumbotron top-space">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque cursus erat vitae interdum. Nam vehicula, felis eu semper tincidunt, mauris risus ultricies dolor, a tristique arcu libero sit amet felis. Donec venenatis sed velit eget dignissim. Mauris tempor purus enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia do</p>
      		<p class="text-right"><a class="btn btn-primary btn-large">Learn more..</a></p>
   		</div> -->

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Rental Contract</title>
+    {% load static %}
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .contract-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .contract-details {
+        margin-bottom: 20px;
+      }
+      .contract-details img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="contract-header">
+        <h1>
+          Car Rental Contract: {{agreement.car.brand}} {{agreement.car.model}}
+        </h1>
+      </div>
+      <div class="contract-details">
+        <img src="{{ agreement.car.image.url }}" alt="Car Image" />
+        <br />
+        <br />
+        <table>
+          <tr>
+            <th>Dealer:</th>
+            <td>{{agreement.car.posted_by.username}}</td>
+          </tr>
+          <tr>
+            <th>Renter:</th>
+            <td>{{agreement.renter.username}}</td>
+          </tr>
+          <tr>
+            <th>Rental Start Date:</th>
+            <td>{{ agreement.rental_start_date|date:"d/m/Y" }}</td>
+          </tr>
+          <tr>
+            <th>Rental End Date:</th>
+            <td>{{ agreement.rental_end_date|date:"d/m/Y" }}</td>
+          </tr>
+        </table>
+      </div>
+      <br />
+      <br />
+      <br />
+      <hr />
+      <h4>
+        <p>
+          This contract is a legal agreement between the above-mentioned dealer
+          and renter for the rental of the car described above. The dealer
+          agrees to rent the car to the renter for the specified period, and the
+          renter agrees to abide by the terms and conditions outlined in this
+          contract. The dealer shall not be held responsible for any damages,
+          accidents, or loss of personal belongings that occur during the rental
+          period. The renter is responsible for returning the car in the same
+          condition as it was received, except for reasonable wear and tear.
+          Failure to return the car on time may result in additional charges.
+          This contract is governed by the laws of Government of United Kingdom.
+        </p>
+      </h4>
+      <hr />
+    </div>
+  </body>
+</html>
