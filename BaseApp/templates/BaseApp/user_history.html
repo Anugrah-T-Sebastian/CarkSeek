@@ -71,7 +71,8 @@
           {% for agreement in rental_agreements %}
           <li class="rental-agreement-item">
             <a href="{% url 'generate_pdf' agreement.id %}"
-              >{{ agreement.rental_start_date|date:"d/m/Y" }}</a
+              >{{ agreement.rental_start_date|date:"d/m/Y" }} to
+              {{agreement.rental_end_date|date:"d/m/Y" }}</a
             ><br />
             <h5>Dealer: {{ agreement.car.posted_by.username }}</h5>
             <span class="car-details">
@@ -93,12 +94,13 @@
           {% for agreement in rental_agreements %}
           <li class="rental-agreement-item">
             <a href="{% url 'generate_pdf' agreement.id %}"
-              >{{ agreement.rental_start_date|date:"d/m/Y" }}</a
+              >{{ agreement.rental_start_date|date:"d/m/Y" }} to
+              {{agreement.rental_end_date|date:"d/m/Y" }}</a
             ><br />
-            <h5>Renter: {{ agreement.car.posted_by.username }}</h5>
+            <h5>Renter: {{ agreement.renter.username }}</h5>
             <span class="car-details">
-              <span class="car-brand">{{ agreement.car.brand }}</span>
-              <span class="car-model">{{ agreement.car.model }}</span>
+              <span class="car-brand">{{ agreement.car.brand|title }}</span>
+              <span class="car-model">{{ agreement.car.model|title }}</span>
             </span>
           </li>
           {% endfor%}
