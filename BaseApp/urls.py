@@ -19,5 +19,5 @@ urlpatterns = [
     path('profile/chatbox', views.userChatbox, name="user-chatbox"),
     path('car-details/<str:pk>', views.carDetailsPage, name="car-details"),
     path('car-details-upload', views.uploadCarDetails, name='car-details-upload'),
-    path('generate-pdf/', views.generate_pdf, name='generate_pdf'),
+    path('generate-pdf/<str:pk>', views.generate_pdf, name='generate_pdf'),
 ]

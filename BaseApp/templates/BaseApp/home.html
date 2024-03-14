@@ -7,13 +7,13 @@
       <div id="da-slider" class="da-slider">
         <div class="da-slide">
           <h2>Car Seek</h2>
-          <p>Get Hassle free quotes on cars, financing and insurance.</p>
+          <p>Get Hassle free quotes on cars rentals.</p>
           <div class="da-img"></div>
         </div>
         <div class="da-slide">
           <h2>Quicker and Easier</h2>
           <p>
-            Our reliable experts and user-friendly tools can help you buy the
+            Our reliable experts and user-friendly tools can help you rent the
             right car for the right price and save your time...
           </p>
           <div class="da-img"></div>
@@ -26,7 +26,7 @@
         <div class="da-slide">
           <h2>Plenty of Users</h2>
           <p>
-            Find the best used car to buy online. Shop for cars by price, make
+            Find the best used car to rent online. Shop for cars by price, make
             and body type.
           </p>
           <div class="da-img"></div>
@@ -44,10 +44,11 @@
 <!-- Intro -->
 <div class="container text-center">
   <br />
-  <h2>Visit our website today!</h2>
+  <h2>Search for best cars today!</h2>
   <p class="text-muted">
-    CarSeek provides a hassle-free approach to car buying that used car buyers
-    and new car buyers alike love!
+    Welcome to CarSeek – your go-to hub for car rentals and dealer connections!
+    Whether you're road-tripping or renting out, we've got you covered. Easy,
+    fun, and hassle-free – let's hit the road together!
   </p>
 </div>
 <!-- /Intro-->
@@ -61,7 +62,7 @@
   </div>
   <div class="row iconColor">
     <div class="col-md-4 col-sm-4">
-      <h3><i class="fa fa-desktop color"></i>&nbsp; SUV</h3>
+      <h3><i class="fa fa-chevron-right color"></i>&nbsp; SUV</h3>
       <!-- Paragraph -->
       <article>
         <div class="card">
@@ -71,13 +72,13 @@
             alt="Card image cap"
           />
           <div class="card-body">
-            <h5 class="card-title">SUV</h5>
+            <h4 class="card-title"><strong>SUV</strong></h4>
             <p class="card-text">
-              A sedan is a type of passenger car that typically features a
-              three-box configuration with separate compartments for the engine,
-              passengers, and cargo. Sedans are characterized by their fixed
-              B-pillars and usually have four doors. They are one of the most
-              common car body styles, known for comfort and safety.
+              An SUV, or Sport Utility Vehicle, is a versatile vehicle type that
+              combines elements of road-going passenger cars with features from
+              off-road vehicles, like higher ground clearance and four-wheel
+              drive. SUVs are known for their spacious interiors, making them
+              ideal for families and outdoor adventures.
             </p>
             <a href="{% url 'search' %}?cartype=suv" class="btn btn-primary"
               >Go to see</a
@@ -88,7 +89,7 @@
     </div>
     <div class="col-md-4 col-sm-4">
       <!-- Heading -->
-      <h3><i class="fa fa-cloud color"></i>&nbsp;Sedan</h3>
+      <h3><i class="fa fa-chevron-right color"></i>&nbsp;Sedan</h3>
       <!-- Paragraph -->
       <article>
         <div class="card">
@@ -98,13 +99,13 @@
             alt="Card image cap"
           />
           <div class="card-body">
-            <h5 class="card-title">Sedan</h5>
+            <h4 class="card-title"><strong>Sedan</strong></h4>
             <p class="card-text">
               A sedan is a type of passenger car that typically features a
               three-box configuration with separate compartments for the engine,
               passengers, and cargo. Sedans are characterized by their fixed
               B-pillars and usually have four doors. They are one of the most
-              common car body styles, known for comfort and safety.
+              common car body styles.
             </p>
             <a href="{% url 'search' %}?cartype=sedan" class="btn btn-primary"
               >Go to see</a
@@ -115,7 +116,7 @@
     </div>
     <div class="col-md-4 col-sm-4">
       <!-- Heading -->
-      <h3><i class="fa fa-home color"></i>&nbsp;Roadster</h3>
+      <h3><i class="fa fa-chevron-right color"></i>&nbsp;Roadster</h3>
       <!-- Paragraph -->
       <article>
         <div class="card">
@@ -125,13 +126,13 @@
             alt="Card image cap"
           />
           <div class="card-body">
-            <h5 class="card-title">Roadster</h5>
+            <h4 class="card-title"><strong>Roadster</strong></h4>
             <p class="card-text">
-              A sedan is a type of passenger car that typically features a
-              three-box configuration with separate compartments for the engine,
-              passengers, and cargo. Sedans are characterized by their fixed
-              B-pillars and usually have four doors. They are one of the most
-              common car body styles, known for comfort and safety.
+              A roadster is a convertible sports car designed for exhilarating
+              performance and driving pleasure. Roadsters are typically
+              two-seaters, have a soft top or a retractable hardtop, and focus
+              on agility and fun driving dynamics. They are often associated
+              with open-air motoring enjoyment.
             </p>
             <a
               href="{% url 'search' %}?cartype=roadster"
@@ -161,7 +162,9 @@
       <div class="col-md-4 col-sm-4">
         <a href="{% url 'user-history' %}">
           <div class="h-caption">
-            <h4><i class="fa fa-arrows fa-2x circle"></i>Purchase history</h4>
+            <h4>
+              <i class="fa fa-credit-card fa-2x circle"></i>Purchase history
+            </h4>
           </div>
           <div class="h-body text-center">
             <p>You can see your purchase history here.</p>
@@ -201,7 +204,7 @@
       <div class="col-md-4 col-sm-4">
         <a href="{% url 'car-details-upload' %}">
           <div class="h-caption">
-            <h4><i class="fa fa-lightbulb-o fa-2x circle"></i>Add New Car</h4>
+            <h4><i class="fa fa-upload fa-2x circle"></i>Add New Car</h4>
           </div>
           <div class="h-body text-center">
             <p>You can add new car here.</p>
@@ -211,7 +214,7 @@
       <div class="col-md-4 col-sm-4">
         <a href="{% url 'user-about' %}">
           <div class="h-caption">
-            <h4><i class="fa fa-desktop fa-2x circle"></i>About Us</h4>
+            <h4><i class="fa fa-user fa-2x circle"></i>About Us</h4>
           </div>
           <div class="h-body text-center">
             <p>Learn about us</p>
